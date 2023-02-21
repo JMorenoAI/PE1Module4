@@ -46,8 +46,8 @@ def update_student():
         print("Student ID does not exist.")
         return
     # Get first name and last name, if user chooses to update
-    first_name = input("Enter first name (press enter to skip): ").strip().title() or students[student_id]["first name"]
-    last_name = input("Enter last name (press enter to skip): ").strip().title() or students[student_id]["last name"]
+    first_name = input("Enter first name: ").students[student_id]["first name"]
+    last_name = input("Enter last name: ").students[student_id]["last name"]
     # Update student information
     students[student_id]["first name"] = first_name
     students[student_id]["last name"] = last_name
