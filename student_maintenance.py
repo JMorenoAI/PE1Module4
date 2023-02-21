@@ -1,22 +1,34 @@
-from data_validation import get_string
-from data_validation import get_num
+import data_validation as dv  # user input data validation
 
-# Initialize an empty dictionary to store student information
+# the following are module level dunders (metadata) for the authorship information
+__author__ = 'Joshua Moreno'
+__version__ = '1.0'
+__date__ = '2023.02.20'
+__status__ = 'Release'
 
-students = {}
+
+# This is a Python program for managing student information. You can add, list, update, and delete a student.
+
+# Data validation used to verify whether the user entered a valid data input
+
+# Display an input prompt to get a string value, which can not be an empty string
+# and loop again if invalid
+
+students = {}  # students 2D dictionary {id: {'first_name': value}, {'last_name': value}}
+next_student_id = 1
 
 
 # Function to add a new student
-def add_student():
+def add_student(students, next_student_id):
     # Get student ID
-    student_id = get_num("Enter student ID: ")
+    student_id = dv.get_num("Enter student ID: ")
     # Check if student ID is already in use
     if student_id in students:
         print("Student ID already exists.")
         return
     # Get first name and last name
-    first_name = get_string("Enter first name: ")
-    last_name = get_string("Enter last name: ")
+    first_name = dv.get_string("Enter first name: ")
+    last_name = dv.get_string("Enter last name: ")
     # Add student to dictionary
     students[student_id] = {"first name": first_name, "last name": last_name}
     print("Student added successfully.")
@@ -25,7 +37,7 @@ def add_student():
 # Function to list or display a student
 def list_student():
     # Get student ID
-    student_id = get_num("Enter student ID: ")
+    student_id = dv.get_num("Enter student ID: ")
     # Check if student ID exists
     if student_id not in students:
         print("Student ID does not exist.")
@@ -40,7 +52,7 @@ def list_student():
 # Function to update a student
 def update_student():
     # Get student ID
-    student_id = get_num("Enter student ID: ")
+    student_id = dv.get_num("Enter student ID: ")
     # Check if student ID exists
     if student_id not in students:
         print("Student ID does not exist.")
@@ -57,7 +69,7 @@ def update_student():
 # Function to delete a student
 def delete_student():
     # Get student ID
-    student_id = get_num("Enter student ID: ")
+    student_id = dv.get_num("Enter student ID: ")
     # Check if student ID exists
     if student_id not in students:
         print("Student ID does not exist.")
@@ -80,7 +92,7 @@ while True:
     print("3. Update a student")
     print("4. Delete a student")
     print("5. Quit")
-    choice = get_num("Enter your choice: ")
+    choice = dv.get_num("Enter your choice: ")
 
     if choice == 1:
         list_student()
