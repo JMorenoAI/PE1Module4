@@ -8,7 +8,7 @@ __status__ = 'Release'
 
 # This is a Python program for managing student information. You can add, list, update, and delete a student.
 
-# Data validation used to verify whether the user entered a valid data input
+# Data validation used to verify whether the user entered a valid data input.
 
 # Display an input prompt to get a string value, which can not be an empty string
 # and loop again if invalid
