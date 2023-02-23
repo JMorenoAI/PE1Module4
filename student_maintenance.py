@@ -24,11 +24,11 @@ def add_student(students, next_student_id):
     last_name = dv.get_string("Enter last name: ")
     # Add student to dictionary
     students[next_student_id] = {"first name": first_name, "last name": last_name}
-    print("Student added successfully.")
+    print(f"ID # {next_student_id} {first_name} {last_name} was added.")
 
 
 # Function to list or display a student
-def list_student():
+def list_students():
     # Get student ID
     student_id = dv.get_num("Enter student ID: ")
     # Check if student ID exists
@@ -70,6 +70,7 @@ def delete_student():
     if len(students) == 0:
         print("There are no students to delete.")
         return
+
     # Get student ID
     student_id = dv.get_num("Enter student ID: ")
     # Check if student ID exists
@@ -77,8 +78,10 @@ def delete_student():
         print("Student ID does not exist.")
         return
 
+    first_name, last_name = students[student_id].values()
+
     # Confirm delete action
-    confirm = input("Are you sure you want to delete this student? (y/n): ")
+    confirm = input(f"Are you sure you want to delete {first_name} {last_name}? (y/n): ")
     if confirm == "y":
         # Remove student from dictionary
         del students[student_id]
