@@ -1,5 +1,6 @@
 import data_validation as dv  # user input data validation
 
+
 # the following are module level dunders (metadata) for the authorship information
 __author__ = 'Joshua Moreno'
 __version__ = '1.0'
@@ -20,8 +21,8 @@ next_student_id = 1
 # Function to add a new student
 def add_student(students, next_student_id):
     # Get first name and last name
-    first_name = dv.get_string("Enter first name: ")
-    last_name = dv.get_string("Enter last name: ")
+    first_name = dv.get_string("Enter first name: ").title()
+    last_name = dv.get_string("Enter last name: ").title()
     # Add student to dictionary
     students[next_student_id] = {"first name": first_name, "last name": last_name}
     print(f"ID # {next_student_id} {first_name} {last_name} was added.")
@@ -62,9 +63,9 @@ def update_student(students):
 
     # Prompt user to update fields
     update_first_name = input(
-        f"Enter new first name (current value: {first_name}), or leave blank to keep current value: ")
+        f"Enter new first name (current value: {first_name}), or leave blank to keep current value: ").title()
     update_last_name = input(
-        f"Enter new last name (current value: {last_name}), or leave blank to keep current value: ")
+        f"Enter new last name (current value: {last_name}), or leave blank to keep current value: ").title()
 
     # Update student information if new values are entered
     if update_first_name != "":
@@ -92,8 +93,8 @@ def delete_student(students):
     first_name, last_name = students[student_id].values()
 
     # Confirm delete action
-    confirm = input(f"Are you sure you want to delete {first_name} {last_name}? (y/n): ")
-    if confirm == "y":
+    confirm = dv.get_yes_no(f"Are you sure you want to delete {first_name} {last_name}? (y/n): ").title()
+    if confirm:
         # Remove student from dictionary
         del students[student_id]
         print("Student deleted successfully.")
