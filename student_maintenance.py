@@ -28,7 +28,7 @@ def add_student(students, next_student_id):
 
 
 # Function to list or display a student
-def list_students():
+def list_students(students):
     # Get student ID
     student_id = dv.get_num("Enter student ID: ")
     # Check if student ID exists
@@ -43,7 +43,7 @@ def list_students():
 
 
 # Function to update a student
-def update_student():
+def update_student(students):
     # Check if there are students to update their information.
     if len(students) == 0:
         print("There are no students to update")
@@ -55,17 +55,28 @@ def update_student():
         print("Student ID does not exist.")
         return
 
-    # Get first name and last name, if user chooses to update
-    first_name = input("Enter first name: ").students[student_id]["first name"]
-    last_name = input("Enter last name: ").students[student_id]["last name"]
-    # Update student information
-    students[student_id]["first name"] = first_name
-    students[student_id]["last name"] = last_name
+    # Get student information
+    student = students[student_id]
+    first_name = student["first name"]
+    last_name = student["last name"]
+
+    # Prompt user to update fields
+    update_first_name = input(
+        f"Enter new first name (current value: {first_name}), or leave blank to keep current value: ")
+    update_last_name = input(
+        f"Enter new last name (current value: {last_name}), or leave blank to keep current value: ")
+
+    # Update student information if new values are entered
+    if update_first_name != "":
+        students[student_id]["first name"] = update_first_name
+    if update_last_name != "":
+        students[student_id]["last name"] = update_last_name
+
     print("Student updated successfully.")
 
 
 # Function to delete a student
-def delete_student():
+def delete_student(students):
     # Check if there are students to delete
     if len(students) == 0:
         print("There are no students to delete.")
